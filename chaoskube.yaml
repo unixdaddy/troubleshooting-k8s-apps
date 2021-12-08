@@ -1,36 +1,36 @@
 ---
 # Source: chaoskube/templates/deployment.yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: RELEASE-NAME-chaoskube
+  name: monster-chaoskube
   labels:
     app.kubernetes.io/name: chaoskube
     app.kubernetes.io/managed-by: "Helm"
-    app.kubernetes.io/instance: "RELEASE-NAME"
+    app.kubernetes.io/instance: "monster"
     helm.sh/chart: chaoskube-3.1.0
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: chaoskube
-      app.kubernetes.io/instance: RELEASE-NAME
+      app.kubernetes.io/instance: monster
   template:
     metadata:
       labels:
         app.kubernetes.io/name: chaoskube
         app.kubernetes.io/managed-by: "Helm"
-        app.kubernetes.io/instance: "RELEASE-NAME"
+        app.kubernetes.io/instance: "monster"
         helm.sh/chart: chaoskube-3.1.0
     spec:
       containers:
         - name: chaoskube
           image: registry.cn-hangzhou.aliyuncs.com/kubeapps/quay-chaoskube:v0.14.0
           args:
-            - --interval=10m
+            - --interval=2m
             - --labels=
             - --annotations=
-            - --namespaces=
+            - --namespaces=trouble1
             - --excluded-weekdays=
             - --excluded-times-of-day=
             - --excluded-days-of-year=

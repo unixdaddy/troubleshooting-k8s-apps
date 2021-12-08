@@ -162,3 +162,12 @@
   162  ls
   163  mv chaoskube chaoskube.yaml
   164  history > history.txt
+#https://artifacthub.io/packages/helm/cloudnativeapp/chaoskube#configuration
+helm repo add cloudnativeapp https://cloudnativeapp.github.io/charts/curated/
+helm install my-chaoskube cloudnativeapp/chaoskube --set dryRun=false,namespaces=trouble1,rbac.create=true
+#template the chart into yaml
+#helm template my-chaoskube cloudnativeapp/chaoskube --set dryRun=false,namespaces=trouble1,rbac.create=true
+#simple install - fails due to no rbac access
+#helm install my-chaoskube cloudnativeapp/chaoskube --version 3.1.0
+#get the chart templates locally
+wget https://cloudnativeapp.github.io/charts/curated/chaoskube-3.1.0.tgz
