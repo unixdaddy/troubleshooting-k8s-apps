@@ -171,3 +171,12 @@ helm install my-chaoskube cloudnativeapp/chaoskube --set dryRun=false,namespaces
 #helm install my-chaoskube cloudnativeapp/chaoskube --version 3.1.0
 #get the chart templates locally
 wget https://cloudnativeapp.github.io/charts/curated/chaoskube-3.1.0.tgz
+##install microservice - after deploy alter the nodeport to be a loadbalancer and edit chaoskube deployment alter args to look at sock-shop namespace i.e. namespaces=trouble1,sock-shop
+git clone https://github.com/microservices-demo/microservices-demo.git
+  152  ls
+  153  cd microservices-demo/
+  154  ls
+  155  cd deploy/kubernetes/
+  156  ls
+  157  kubectl apply -f complete-demo.yaml
+  158  kubectl get all -n sock-shop
