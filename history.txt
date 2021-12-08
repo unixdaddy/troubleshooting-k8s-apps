@@ -1,0 +1,164 @@
+    1  gcloud config set compute/region us-west2 
+    2  gcloud config set compute/zone us-west2-a 
+    3  gcloud services enable container.googleapis.com 
+    4  gcloud container clusters create test --machine-type=e2-standard-2 
+    5  git clone https://github.com/unixdaddy/troubleshooting-k8s-apps.git
+    6  cd troubleshooting-k8s-apps/
+    7  ls
+    8  more 00_intro.yaml 
+    9  kubectl create ns trouble1 --dry-run=client -o yaml
+   10  vim 00_intro.yaml 
+   11  vim 00_intro-fixed.yaml 
+   12  vim 01_pp_image.yaml
+   13  vim 01_pp_image-fixed.yaml 
+   14  ls
+   15  more 00_intro.yaml 
+   16  more 00_intro-fixed.yaml 
+   17  more 01_pp_image.yaml 
+   18  more 01_pp_image-fixed.yaml 
+   19  more 02_pp_oomer.yaml 
+   20  vim 02_pp_oomer.yaml 
+   21  vim 02_pp_oomer-fixed.yaml 
+   22  cat 02_pp_oomer.yaml 
+   23  cat 02_pp_oomer-fixed.yaml 
+   24  ls
+   25  cat 05_network-wrongsel.yaml 
+   26  ls
+   27  mv 01_pp_image.yaml 01_pp.yaml
+   28  mv 01_pp_image-fixed.yaml 01_pp-fixed.yaml
+   29  mv 02_pp_oomer.yaml 02_pp.yaml
+   30  mv 02_pp_oomer-fixed.yaml 02_pp-fixed.yaml
+   31  mv 03_pp_logs.yaml 03_pp.yaml 
+   32  mv 04_storage-failedmount.yaml 04_storage.yaml
+   33  mv 04_storage-failedmount-fixed.yaml 04_storage-fixed.yaml
+   34  mv 05_network-wrongsel.yaml 05_network.yaml
+   35  mv 05_network-wrongsel-fixed.yaml 05_network-fixed.yaml
+   36  ls
+   37  kubectl apply -f 00_intro.yaml 
+   38  kubectl get all -n trouble1
+   39  kubectl get pods -n trouble1
+   40  echo $PS1
+   41  echo $PS1 >> SHELL
+   42  more SHELL 
+   43  vim SHELL 
+   44  echo $CWD
+   45  cwd
+   46  pwd
+   47  basename
+   48  export PS1="monster$ "
+   49  ls
+   50  clear
+   51  export PS1="monster$ "
+   52  clear
+   53  export PS1="monster$ "
+   54  clear 
+   55  kubectl get pods -n trouble1
+   56  clear
+   57  kubectl get all
+   58  kubectl get all -n trouble1
+   59  pwd
+   60  ls
+   61  cd troubleshooting-k8s-apps/
+   62  ls
+   63  clear
+   64  kubectl get pods -n kube-systems
+   65  source <(kubectl completion bash)
+   66  kubectl get services
+   67  kubectl create deployment nginx --image=nginx --replicas=5
+   68  kubectl get pod
+   69  kubectl describe pod nginx-6799fc88d8-m65kw 
+   70  kubectl completion -h
+   71  kubectl create --help
+   72  kubectl create deployment --help
+   73  kubectl explain deployment
+   74  kubectl get pod -n trouble1 
+   75  kubectl describe pod -n trouble1 unhappy-camper-686d595656-qtz4p 
+   76  kubectl get pod -n trouble1 
+   77  ls
+   78  kubectl apply -f 01_pp-fixed.yaml 
+   79  kubectl get pods -n trouble1 
+   80  kubectl apply -f 00_intro-fixed.yaml 
+   81  kubectl delete -f 01_pp-fixed.yaml 
+   82  kubectl get pods -n trouble1 
+   83  more 00_intro.yaml 
+   84  more 00_intro-fixed.yaml 
+   85  kubectl get events
+   86  kubectl get events -n trouble1 
+   87  ls
+   88  kubectl apply -f 01_pp.yaml 
+   89  kubectl get pods -n trouble1
+   90  kubectl describe pod -n trouble1 confused-58489795b-2lslk 
+   91  kubectl get pods -n trouble1
+   92  more 01_pp.yaml 
+   93  more 01_pp-fixed.yaml 
+   94  kubectl apply -f 01_pp-fixed.yaml 
+   95  kubectl get pods -n trouble1
+   96  kubectl describe pod -n trouble1 confused-5577c48f5f-4m67g 
+   97  ls
+   98  docker images
+   99  docker ps
+  100  ls
+  101  kubectl apply -f 02_pp.yaml 
+  102  kubectl get pods -n trouble1 
+  103  more 02_pp.yaml 
+  104  kubectl get pods -n trouble1 
+  105  kubectl describe pod -n trouble1 wegotan-86b8c96cbf-v5z4v 
+  106  kubectl apply -f 02_pp-fixed.yaml 
+  107  kubectl get pods -n trouble1 
+  108  more 02_pp-fixed.yaml 
+  109  kubectl delete all -n trouble1 
+  110  kubectl delete all --all -n trouble1 
+  111  kubectl get all -n trouble1 
+  112  kubectl apply -f 00_intro.yaml 
+  113  kubectl get all -n trouble1 
+  114  kubectl get pods -n trouble1
+  115  kubectl describe pod -n trouble1 
+  116  kubectl get pods -n kube-system 
+  117  kubectl apply -f *.yaml
+  118  ls
+  119  git status
+  120  git add .
+  121  git commit -m "updated"
+  122  git config --global user.email "unixdaddy@gmail.com"
+  123  git config --global user.name "unixdaddy"
+  124  git config --global u
+  125  git config --global 
+  126  git config --global -l
+  127  git status
+  128  git push
+  129  git commit -m "updated"
+  130  git push
+  131  ls
+  132  kubecl apply -f 00_intro-fixed.yaml 
+  133  kubectl apply -f 00_intro-fixed.yaml 
+  134  kubectl apply -f 01_pp-fixed.yaml 
+  135  kubectl apply -f 02_pp-fixed.yaml 
+  136  kubectl apply -f 03_pp.yaml 
+  137  kubectl apply -f 04_storage-fixed.yaml 
+  138  kubectl get all -n trouble1 
+  139  helm repo add cloudnativeapp https://cloudnativeapp.github.io/charts/curated/
+  140  helm repo list
+  141  helm update
+  142  helm repo update
+  143  helm --he;p
+  144  helm --help
+  145  helm search chaoskube
+  146  helm search hub chaoskube
+  147  helm search repo
+  148  helm search repo --help
+  149  helm search repo chaos
+  150  helm search repo chaos --output table
+  151  helm search repo chaos --output yaml
+  152  helm repo --help
+  153  helm search --help
+  154  helm search repo --help
+  155  helm template
+  156  helm template --help
+  157  helm template chaoskube
+  158  helm search repo chaos
+  159  helm template cloudnativeapp/chaoskube
+  160  helm template cloudnativeapp/chaoskube --export
+  161  helm template cloudnativeapp/chaoskube > chaoskube
+  162  ls
+  163  mv chaoskube chaoskube.yaml
+  164  history > history.txt
