@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wheresmyvolume
+  name: wheres
+  namespace: trouble1
 spec:
   selector:
     matchLabels:
-      app: wheresmyvolume
+      app: wheres
   replicas: 1
   template:
     metadata:
       labels:
-        app: wheresmyvolume
+        app: wheres
     spec:
       containers:
         - name: writer
@@ -27,10 +28,10 @@ spec:
           command:
             - sh
             - '-c'
-            - "cat /tmp/in/data; sleep 10000"
+            - "ls -la /tmp/in/; sleep 10000"
           volumeMounts:
             - name: xchange
-              mountPath: /tmp/data
+              mountPath: /tmp/in
       volumes:
       - name: xchange
         emptyDir: {}

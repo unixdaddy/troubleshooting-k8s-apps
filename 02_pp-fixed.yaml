@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wegotan-oomer
+  name: wegotan
+  namespace: trouble1
 spec:
   selector:
     matchLabels:
-      app: oomer
+      app: ooh
   replicas: 1
   template:
     metadata:
       labels:
-        app: oomer
+        app: ooh
     spec:
       containers:
-        - name: greedymuch
+        - name: much
           image: centos:7
           command:
             - sh

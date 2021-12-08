@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: trouble1
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: unhappy-camper
+  namespace: trouble1
 spec:
   selector:
     matchLabels:
